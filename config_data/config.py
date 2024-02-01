@@ -12,25 +12,25 @@ class TgBot:
 
 
 @dataclass
-class DatabaseConfig:
+class PostgresConfig:
     driver: str
-    db_user: str
-    db_password: str
-    db_host: str
-    db_port: str
+    user: str
+    password: str
+    host: str
+    port: int
     database: str
 
 
 @dataclass
 class RedisConfig:
-    redis_host: str
-    redis_port: int
+    host: str
+    port: int
 
 
 @dataclass
 class Config:
     tg_bot: TgBot
-    db: DatabaseConfig
+    postgres: PostgresConfig
     redis: RedisConfig
 
 
@@ -43,11 +43,11 @@ def load_config() -> Config:
     env.read_env()
 
     return Config(tg_bot=TgBot(token=env('BOT_TOKEN')),
-                  db=DatabaseConfig(driver=env('POSTGRES_DRIVER'),
-                                    db_user=env('POSTGRES_USER'),
-                                    db_password=env('POSTGRES_PASSWORD'),
-                                    db_host=env('POSTGRES_HOST'),
-                                    db_port=env('POSTGRES_PORT'),
-                                    database=env('POSTGRES_DB')),
-                  redis=RedisConfig(redis_host=env('REDIS_HOST'),
-                                    redis_port=int(env('REDIS_PORT'))))
+                  postgres=PostgresConfig(driver=env('POSTGRES_DRIVER'),
+                                          user=env('POSTGRES_USER'),
+                                          password=env('POSTGRES_PASSWORD'),
+                                          host=env('POSTGRES_HOST'),
+                                          port=int(env('POSTGRES_PORT')),
+                                          database=env('POSTGRES_DB')),
+                  redis=RedisConfig(host=env('REDIS_HOST'),
+                                    port=int(env('REDIS_PORT'))))

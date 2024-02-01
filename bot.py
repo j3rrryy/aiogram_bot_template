@@ -5,7 +5,7 @@ from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.redis import RedisStorage, Redis
 
 from config_data import Config, load_config
-from database import get_sessionmaker
+from database import get_postgres_sessionmaker
 from handlers import router as user_handlers_router
 from keyboards import set_main_menu
 
@@ -25,8 +25,8 @@ async def main() -> None:
     config: Config = load_config()
 
     storage: RedisStorage = RedisStorage(
-        redis=Redis(host=config.redis.redis_host,
-                    port=config.redis.redis_port))
+        redis=Redis(host=config.redis.host,
+                    port=config.redis.port))
 
     bot: Bot = Bot(token=config.tg_bot.token, parse_mode='HTML')
     disp: Dispatcher = Dispatcher(storage=storage)
@@ -36,7 +36,7 @@ async def main() -> None:
     disp.include_router(user_handlers_router)
 
     await bot.delete_webhook(drop_pending_updates=True)
-    await disp.start_polling(bot, sessionmaker=get_sessionmaker())
+    await disp.start_polling(bot, sessionmaker=get_postgres_sessionmaker())
 
 
 if __name__ == '__main__':
