@@ -43,7 +43,7 @@ def load_config() -> Config:
     env.read_env()
 
     return Config(tg_bot=TgBot(token=env('BOT_TOKEN')),
-                  db=DatabaseConfig(driver=env('DB_DRIVER'),
+                  db=DatabaseConfig(driver=env('POSTGRES_DRIVER'),
                                     db_user=env('POSTGRES_USER'),
                                     db_password=env('POSTGRES_PASSWORD'),
                                     db_host=env('POSTGRES_HOST'),
