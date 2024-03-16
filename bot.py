@@ -23,12 +23,13 @@ async def main() -> None:
     logger.info('Starting bot')
 
     config: Config = load_config()
+    properties: DefaultBotProperties = DefaultBotProperties(parse_mode='HTML')
 
     storage: RedisStorage = RedisStorage(
         redis=Redis(host=config.redis.host,
                     port=config.redis.port))
 
-    bot: Bot = Bot(token=config.tg_bot.token, parse_mode='HTML')
+    bot: Bot = Bot(token=config.tg_bot.token, default=properties)
     disp: Dispatcher = Dispatcher(storage=storage)
 
     await set_main_menu(bot)

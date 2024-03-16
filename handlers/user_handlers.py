@@ -1,7 +1,7 @@
 from aiogram import Bot, Router, F
 from aiogram.types import Message, ReplyKeyboardRemove, \
     CallbackQuery, FSInputFile
-from aiogram.filters import Command, CommandStart, StateFilter, Text
+from aiogram.filters import Command, CommandStart, StateFilter
 from aiogram.fsm.state import default_state
 from aiogram.fsm.context import FSMContext
 from sqlalchemy.ext.asyncio import async_sessionmaker, AsyncSession
