@@ -8,7 +8,7 @@ from sqlalchemy.ext.asyncio import async_sessionmaker, AsyncSession
 
 from lexicon import LEXICON_RU, LEXICON_EN, LEXICON_BOTH, \
     ERROR_LEXICON_RU, ERROR_LEXICON_EN, ERROR_LEXICON_BOTH
-from middlewares import AntiFloodMiddleware
+from middlewares import *
 
 
 router: Router = Router()
