@@ -12,4 +12,5 @@ from middlewares import *
 
 
 router: Router = Router()
+router.message.middleware.register(AuthMiddleware())
 router.message.middleware.register(AntiFloodMiddleware())
