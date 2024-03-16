@@ -1,5 +1,13 @@
 # Aiogram <bot_type> bot
 
+> [!TIP]
+> Please update the requirements before starting.
+>
+> ```shell
+> pip install -r requirements.txt --upgrade
+> pip freeze > requirements.txt
+> ```
+
 ## :book: Key features
 
 - Uses PostgreSQL

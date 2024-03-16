@@ -7,7 +7,7 @@ from config_data import Config, load_config
 
 def get_postgres_sessionmaker() -> async_sessionmaker[AsyncSession]:
     """
-    Configure the postgres connection
+    Configure the postgres connection.
     """
 
     config: Config = load_config()

@@ -6,7 +6,7 @@ from lexicon import LEXICON_COMMANDS_BOTH
 
 async def set_main_menu(bot: Bot):
     """
-    Sets the main menu commands.
+    Set the main menu commands.
     """
 
     main_menu_commands = [BotCommand(command=command, description=description)
