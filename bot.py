@@ -6,7 +6,7 @@ from aiogram.fsm.storage.redis import RedisStorage, Redis
 
 from config_data import Config, load_config
 from database import get_postgres_sessionmaker
-from handlers import router as user_handlers_router
+from handlers import user_router
 from keyboards import set_main_menu
 
 
@@ -34,7 +34,7 @@ async def main() -> None:
 
     await set_main_menu(bot)
 
-    disp.include_router(user_handlers_router)
+    disp.include_router(user_router)
 
     await bot.delete_webhook(drop_pending_updates=True)
     await disp.start_polling(bot, sessionmaker=get_postgres_sessionmaker())

@@ -11,6 +11,4 @@ from lexicon import LEXICON_RU, LEXICON_EN, LEXICON_BOTH, \
 from middlewares import *
 
 
-router: Router = Router()
-router.message.middleware.register(AuthMiddleware())
-router.message.middleware.register(AntiFloodMiddleware())
+admin_router: Router = Router()

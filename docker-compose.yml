@@ -16,7 +16,7 @@ services:
     depends_on:
       - postgres
       - redis
-    container_name: weather_bot
+    container_name: <bot_name>_bot
 
   postgres:
     image: postgres:alpine
