@@ -4,7 +4,7 @@ import logging
 from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.redis import RedisStorage, Redis
 
-from config_data import Config, load_config
+from config import load_config
 from database import get_postgres_sessionmaker
 from handlers import user_router
 from keyboards import set_main_menu
@@ -22,8 +22,8 @@ async def main() -> None:
 
     logger.info('Starting bot')
 
-    config: Config = load_config()
-    properties: DefaultBotProperties = DefaultBotProperties(parse_mode='HTML')
+    config = load_config()
+    properties = DefaultBotProperties(parse_mode='HTML')
 
     storage: RedisStorage = RedisStorage(
         redis=Redis(host=config.redis.host,

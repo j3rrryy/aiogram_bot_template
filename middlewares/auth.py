@@ -7,10 +7,6 @@ from database import User, get_postgres_sessionmaker
 
 
 class AuthMiddleware(BaseMiddleware):
-    """
-    Get user from the db.
-    """
-
     async def __call__(
             self,
             handler: Callable[[TelegramObject, dict[str, Any]], Awaitable[Any]],
