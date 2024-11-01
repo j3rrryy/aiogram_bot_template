@@ -1,7 +1,7 @@
 # Aiogram <bot_type> bot
 
 > [!TIP]
-> Please update the requirements before starting.
+> It is recommended to install updated dependencies.
 >
 > ```shell
 > pip install -r requirements.txt --upgrade
@@ -11,7 +11,7 @@
 ## :book: Key features
 
 - Uses PostgreSQL
-- Uses <languages> language to communicate
+- Uses <languages_> language to communicate
 
 ## :computer: Requirements
 
