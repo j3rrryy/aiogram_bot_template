@@ -6,7 +6,7 @@ from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 
-from src.config import Config, load_config
+from src.config import load_config
 from src.database import models
 
 # this is the Alembic Config object, which provides
@@ -14,7 +14,7 @@ from src.database import models
 config = context.config
 section = config.config_ini_section
 
-env_conf: Config = load_config()
+env_conf = load_config()
 
 config.set_section_option(section, "POSTGRES_DRIVER", env_conf.postgres.driver)
 config.set_section_option(section, "POSTGRES_USER", env_conf.postgres.user)

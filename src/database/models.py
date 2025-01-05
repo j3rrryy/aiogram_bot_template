@@ -7,4 +7,11 @@ Base = declarative_base()
 class User(Base):
     __tablename__ = "users"
 
-    id = sa.Column(sa.Integer, unique=True, nullable=False, primary_key=True)
+    id = sa.Column(sa.INTEGER, unique=True, nullable=False, primary_key=True)
+
+    def __str__(self) -> str:
+        return f"<User: {self.id}>"
+
+    def columns_to_dict(self) -> dict:
+        d = {key: getattr(self, key) for key in self.__mapper__.c.keys()}
+        return d
