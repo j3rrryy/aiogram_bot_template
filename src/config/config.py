@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from cashews import cache
 from environs import Env
 
 __all__ = ["Config", "load_config"]
@@ -43,6 +44,10 @@ class Config:
 def load_config():
     env: Env = Env()
     env.read_env()
+    redis_host = env("REDIS_HOST")
+    redis_port = int(env("REDIS_PORT"))
+
+    cache.setup(f"redis://{redis_host}:{redis_port}/1", client_side=True)
 
     return Config(
         bot=Bot(token=env("BOT_TOKEN")),
@@ -54,5 +59,5 @@ def load_config():
             port=int(env("POSTGRES_PORT")),
             database=env("POSTGRES_DB"),
         ),
-        redis=RedisConfig(host=env("REDIS_HOST"), port=int(env("REDIS_PORT"))),
+        redis=RedisConfig(host=redis_host, port=redis_port,
     )

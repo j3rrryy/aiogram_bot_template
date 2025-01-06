@@ -15,7 +15,7 @@
 ## :book: Key features
 
 - Main DB - PostgreSQL
-- DB for cache - Redis
+- DB for cache and states - Redis
 - Uses <languages> languages to communicate
 
 ## :computer: Requirements
